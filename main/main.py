@@ -1,3 +1,31 @@
+
+#necessary imports
+import random #adds the ability to use random numbers
+import time, os, sys
+
+def terminalPrint(text):
+  for char in text:
+    sys.stdout.write(char)
+    sys.stdout.flush()
+    time.sleep(0.005)
+    
+def typingPrint(text):
+  for char in text:
+    sys.stdout.write(char)
+    sys.stdout.flush()
+    time.sleep(0.019)
+    
+def terminalPrint(text):
+  for char in text:
+    sys.stdout.write(char)
+    sys.stdout.flush()
+    time.sleep(0.05)
+  value = input()
+  return value
+
+def clearScreen():
+  os.system("clear")
+    
 weapon = False
 
 def strangeCreature():
@@ -89,30 +117,25 @@ def showShadowFigure():
 
 
 def introScene():
-  directions = ["left","right","forward"]
-  print("You are at a crossroads, and you can choose to go down any of the four hallways. Where would you like to go?")
-  userInput = ""
-  while userInput not in directions:
-    print("Options: left/right/backward/forward")
-    userInput = input()
-    if userInput == "left":
-      showShadowFigure()
-    elif userInput == "right":
-      showSkeletons()
-    elif userInput == "forward":
-      hauntedRoom()
-    elif userInput == "backward":
-      print("You find that this door opens into a wall.")
-    else: 
-      print("Please enter a valid option.")
+    clearScreen()
+    typingPrint("\"Today's the day! I finally landed a tech internship after three years.\n")
+    typingPrint("It's my time to shine!\" You leap out of your car once your\n")
+    typingPrint("Kia Soul putts to a stop. \"Is my GPS broken? This can't be\n")
+    typingPrint("the correct place.\" A dilapidated urban building stands before you.\n")
+    clearScreen()
+    typingPrint("The door hangs off its hinges almost as if it's inviting you in.\n")
+    typingPrint("As you hesitantly approach the building, a tall jolly man with\n")
+    typingPrint("glasses peeks his head around the corner akin to a Mystery Gang member.\n")
+    typingPrint("???: \"What's your name again?\"\n")
+    name = input("Enter name: ")
+    typingPrint("Ohh, right. Nice to meet you in person " + name + ".\n")
+    typingPrint(name + ": " + "\"Nate, is that you?\"")
+    typingPrint("Nate: \"Yup, I would probably recognize you too if you had your\n")
+    typingPrint("camera on in the online meeting. Let's continue this conversation inside.\n")
 
-if __name__ == "__main__":
-  while True:
-    print("Welcome to the Adventure Game!")
-    print("As an avid traveller, you have decided to visit the Catacombs of Paris.")
-    print("However, during your exploration, you find yourself lost.")
-    print("You can choose to walk in multiple directions to find a way out.")
-    print("Let's start with your name: ")
-    name = input()
-    print("Good luck, " +name+ ".")
-    introScene()
+
+
+
+
+introScene()
+
