@@ -8,6 +8,7 @@ keycard = False
 weight = 0
 explore = False
 cleetusTalk = False
+lives = 5
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def terminalPrint(text):
@@ -232,21 +233,51 @@ def lobbyElevator():
   buildPC()
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+def wrongHypervisor():
+  global lives
+  lives -= 1
+  
+def rightHypervisor():
+  pass
+
+def hypervisorQuestion():
+  typingPrint("Should we use a type 1 or type 2 hypervisor?\"\n")
+  actions = ["1", "2"]
+  userInput = ""
+  while userInput not in actions:
+    typingPrint("Options: 1/2\n")
+    userInput = input()
+    if userInput == "1":
+      wrongHypervisor()
+    elif userInput == "2":
+      rightHypervisor()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
+
 def finishedPC():
-  typingPrint("Yippee!")
+  typingPrint(name + ": \"It's all finished!\"\n")
+  typingPrint("Janet: \"Thank you so much!\"\n")
+  typingPrint("Nate: \"What a star. Now... let's see if you can install the right hypervisor on her computer.\"\n")
+  typingPrint("Our company operates on Linux, but she chose to have a Windows PC.\"\n")
+  typingPrint("It is essentially a manager for virtual machines. A virtual machine is like a fake operating system.\"\n")
+  typingPrint("It allows a user to use their PC on an operating system other than the natively installed one.\"\n")
+  typingPrint("You can have multiple opened at a time, and ahypervisor is what manages these virtual machine instances.\"\n")
+  hypervisorQuestion()
+
 
 def brokenPC():
+  global lives
+  lives -= 1
   typingPrint("Janet: \"NOOOO, MY BEAUTIFUL PC. YOU ARE UNQUALIFIED. NATE, GET THEM OUT OF HERE!!!\"")
 
 def buildPC():
   pcFails = 0
   pcWins = 0
   steps = [1, 4, 5, 3, 6, 7, 2, 8]
+  words = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eigth"]
   for i in range(len(steps)):
-      if i == 0:
-          typingPrint("What's the first step to building a PC?\n")
-      else:
-          typingPrint("What's the next step to building a PC?\n") 
+      typingPrint("What's the " + words[i] + " step to building a PC?\n")
       typingPrint("1: Ground the PC to prevent Electrostatic Discharge\n")
       typingPrint("2: Install GPU\n")
       typingPrint("3: Install Power Supply\n")
@@ -255,7 +286,7 @@ def buildPC():
       typingPrint("6: Install Motherboard\n")
       typingPrint("7: Install SSD/HDD\n")
       typingPrint("8: Plug in PC and power on\n")  
-      userInput = int(input())
+      userInput = int(input("Enter Answer: "))
       if userInput == steps[i]:
           pcWins += 1
           typingPrint("Correct.\n")
