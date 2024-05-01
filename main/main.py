@@ -229,23 +229,49 @@ def lobbyElevator():
   typingPrint(name + ": \"Wow, that's awesome! I can't wait to build it for you.\"\n")
   typingPrint("Nate: \"Okay, let's get started. I'll give you about two hours to build it.\"\n")
   typingPrint(name + ": \"Sounds like a deal.\"\n")
+  buildPC()
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+def finishedPC():
+  typingPrint("Yippee!")
 
+def brokenPC():
+  typingPrint("Janet: \"NOOOO, MY BEAUTIFUL PC. YOU ARE UNQUALIFIED. NATE, GET THEM OUT OF HERE!!!\"")
 
-  actions = ["leave"]
-  userInput = ""
-  while userInput not in actions:
-    typingPrint("Options: leave\n")
-    userInput = input()
-    if userInput == "leave":
-      enterBuilding()
-    else:
-      typingPrint("Please enter a valid option.\n")
-  
+def buildPC():
+  pcFails = 0
+  pcWins = 0
+  steps = [1, 4, 5, 3, 6, 7, 2, 8]
+  for i in range(len(steps)):
+      if i == 0:
+          typingPrint("What's the first step to building a PC?\n")
+      else:
+          typingPrint("What's the next step to building a PC?\n") 
+      typingPrint("1: Ground the PC to prevent Electrostatic Discharge\n")
+      typingPrint("2: Install GPU\n")
+      typingPrint("3: Install Power Supply\n")
+      typingPrint("4: Install CPU & Cooler\n")
+      typingPrint("5: Install RAM\n")
+      typingPrint("6: Install Motherboard\n")
+      typingPrint("7: Install SSD/HDD\n")
+      typingPrint("8: Plug in PC and power on\n")  
+      userInput = int(input())
+      if userInput == steps[i]:
+          pcWins += 1
+          typingPrint("Correct.\n")
+      else:
+          pcFails += 1
+          typingPrint("Wrong.\n")
+      typingPrint("You have " + str(pcFails) + " incorrect and " + str(pcWins) + " correct.\n")
+      clearScreen()
+      if pcFails >= 3:
+          brokenPC()
+      if pcWins >= 8:
+          finishedPC()
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
   clearScreen()
   typingPrint("\"Today's the day! I finally landed a tech internship after three years.\n")
   typingPrint("It's my time to shine!\" You leap out of your car once your\n")
@@ -263,3 +289,4 @@ if __name__ == "__main__":
   typingPrint("camera on in the online meeting. Let's continue this conversation inside.\n")
   introScene()
     
+buildPC()
