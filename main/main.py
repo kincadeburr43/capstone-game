@@ -243,20 +243,85 @@ def lobbyElevator():
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+def floor4ElevatorRight():
+  typingPrint(name + ": \"That's all I needed... you're cooked brother.\" You feel a shove in your back which propels you into the grimy elevator. Your consciousness fades in and out... then suddenly the elevator falls from beneath you, and you pass out.\n")
+  typingPrint("???: \"It's so nice to meet you. I enjoy watching my prey struggle.\"\n")
+  typingPrint(name + ": \"huh, what's going on?\"\n")
+  typingPrint("???: \"You were finished the moment you applied to this job. I've been feeding off your brain power ever since you stepped into this building. Every problem you solve only increases my power. It's so yummy!\"\n")
+  typingPrint(name + ": \"WHAT?! WHO EVEN ARE YOU?\"\n")
+  typingPrint("???: \"Ho, ho. You know me. I'm your boss, Ole Smitty, otherwise known as the subnetting wizard.\"\n")
+  typingPrint(name + ": \"Why would you do this to me?\"\n")
+  typingPrint("Ole Smitty: \"This is how I keep this company running. All of my brain power has given me psychic powers. With these great powers, I can telekinetically spread mind propaganda promoting the company.\"\n")
+  typingPrint(name + ": \"That's horrible! Have you been mind-controlling me too?\"\n")
+  typingPrint("Ole Smitty: \"You learn quickly, youngin. I've been manipulating your every movement since you joined us.\"\n")
+  typingPrint(name + ": \"NO. IT'S NOT POSSIBLE.\"\n")
+  typingPrint("Ole Smitty: \"Believe it, Sonny. There's no point in denying the truth. It may very well just cost you your life. Now, because I am so gracious and love all my employees, I will give you a chance to escape with a good reference letter and a job opportunity elsewhere.\"\n")
+  typingPrint(name + ": \"Please... what do I have to do.\"\n")
+  typingPrint("Ole Smitty: \"You must solve 3 subnetting problems. If you even miss one... it's joever.\"\n")typingPrint(name + ": \"Zounds! I need to get out of here. Give me the first problem.\"\n")
+  typingPrint("Ole Smitty: \"As you wish. Here's the first problem.\"")
+  subnet1()
+  
+def floor4Elevator():
+  global name
+  i = 0
+  randNum4 = random.randint(0,65536)
+  binNum4 = bin(randNum4)[2:].zfill(16) # [2:] takes the first two characters off the binary string (0b) and zfill pads the front with 0's until it is 4-digits long
+  typingPrint(name + ": \"Let's go to the 5th floor so you can meet the boss. I'm sure he'd love to see his new intern.\"\n")
+  typingPrint(name + ": \"That sounds like a plan.\"\n")
+  typingPrint("*He talks about this so casually, but I'm pretty nervous. My mind feels like it's rotting, and my stomach is turning. I think I'm going to be sick.*\n")
+  typingPrint("Nate: \"Of course, this is the top floor, so it's the most secure with a 16 digit binary lock. The number is " + str(randNum4) +", now convert it into binary.\"\n")
+  
+  userInput = input("Enter code: ")
+  while userInput != binNum4:
+    typingPrint("You try swiping your card, but no money. Let's try another code.\n")
+    userInput = input("Enter code: ")
+    i += 1
+    if i >= 2:
+        typingPrint("Nate: \"Wrong again. Now we're locked out! And you got so close to meeting the boss too... I'll have to deal with you myself.\"\n*Nate's head enlarges 5 fold, and you feel your brain start to shrink. You dead.\n(Bad Binary Ending #3)")
+        break
+  if userInput == binNum4:
+    floor4ElevatorRight()
+    
+  
+def staticRouteWrong():
+  typingPrint("Nate: *incorrect buzzer sound effect*\"Go again.\"n")
+  staticRoute()
+  
+def staticRouteRight():
+  global name
+  typingPrint("Nate: \"All done with the routers, fantastic job!\"n")
+  typingPrint(name + ": \"Thanks again, Nate. It's really nothing. I'm just doing my job.\"\n")
+  floor4Elevator()
+
+def staticRoute():
+  typingPrint("What is the command to configure a basic static route?\n")
+  typingPrint("1: ip route outside-address subnet-mask inside-address\n")
+  typingPrint("2: ip route inside-address subnet-mask outside-address\n")
+  typingPrint("3: ip route mapping inside-address subnet-mask outside-address\n")
+  actions = ["1", "2", "3"]
+  userInput = ""
+  while userInput not in actions:
+    typingPrint("Options: 1/2/3\n")
+    userInput = input()
+    if userInput == "2":
+      staticRouteRight()
+    elif userInput == "3" or "1":
+      staticRouteWrong()
+    else:
+      typingPrint("Please enter a valid option.\n")
 def natRight():
-  typingPrint("Nate: \"Try that again... you can do better.\"\n")
+  typingPrint("Nate: \"Shweet! On to the final problem of the floor.\"\n")
+  staticRoute()
   
 def natWrong():
   typingPrint("Nate: \"Nah, fam. Try again.\"\n")
 
 
 def nat():
+  global name
   typingPrint(name + "\"Got it, Nate. Thanks.\"\n")
-
   typingPrint("You are already logged into the router, so you enter the exit command to return to global configuration mode.\n")
-
   typingPrint(name + "*It looks like I need to create a static NAT configuration.*\n")
-
   typingPrint("What is the command used to create a static inside NAT configuration?\n")
   typingPrint("1: ip nat translation inside address\n")
   typingPrint("2: ip nat inside\n")
@@ -704,7 +769,7 @@ def buildPC():
           finishedPC()
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-floor3ElevatorRight()
+floor4ElevatorRight()
 
 '''if __name__ == "__main__":
   clearScreen()
