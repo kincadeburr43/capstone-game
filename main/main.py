@@ -47,6 +47,7 @@ def clearScreen():
 #function to initiate the intro scene of the game
 def introScene():
   global name
+  clearScreen()
   actions = ["leave","follow"]
   userInput = ""
   while userInput not in actions:
@@ -70,6 +71,7 @@ def unemployedEnd():
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def enterBuilding():
   global name
+  clearScreen()
   if explore == False:
     clearScreen()
     typingPrint("*The inside of the building looks surprisingly normal.*\n")
@@ -111,6 +113,7 @@ def enterBuilding():
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       
 def caseOhEnding():
+  clearScreen()
   typingPrint("Nate: \"You broke the couch?! You're out of control and now banned from the snacks.")
   typingPrint("Go back to the lobby.")
   
@@ -164,6 +167,7 @@ def cleetus1():
   global name
   global cleetusTalk
   cleetusTalk = True
+  clearScreen()
   typingPrint("Cleetus: \"Why of course. You don't need to pay anyone else for desk service when you have Cleetus.\"\n")
   typingPrint(name + ": " + "*tight budget I guess*\n")
   talkToCleetus()
@@ -172,6 +176,7 @@ def cleetus2():
   global name
   global cleetusTalk
   cleetusTalk = True
+  clearScreen()
   typingPrint("Cleetus: \"Paid? You're the unpaid intern. It says so right here on your name tag.\"\n")
   typingPrint(name + ": " + "*At least I'll get experience.*\n")
   talkToCleetus()
@@ -180,6 +185,7 @@ def cleetus3():
   global name
   global cleetusTalk
   cleetusTalk = True
+  clearScreen()
   typingPrint("Cleetus: \"No.\"\n")
   typingPrint(name + ": " + "\"Why not?\"\n")
   typingPrint("Cleetus: \"No one meets the boss.\"\n")
@@ -243,7 +249,89 @@ def lobbyElevator():
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+def subnet3Right():
+  clearScreen()
+  typingPrint("Ole Smitty: \"This is not possible. No. No no no no no. NO!\n")
+  typingPrint("There's no chance you just bested me, the subnetting wizard, Ole Smitty.\n")
+  typingPrint("I cannot live after such a devastating embarrassment.\n")
+  typingPrint("Here is your recommendation letter and company of interest.\n")
+  typingPrint("\n")
+  typingPrint("He hands you a tobacco-stained piece of paper with\n")
+  typingPrint('the words, "Google, hire dis guy. He very smart.\n')
+  typingPrint("-Ole Smitty.\"\n")
+  typingPrint("\n")
+  typingPrint("You celebrate your victory with a Fortnite dance and return to the\n")
+  typingPrint("outside world just to realize you are still jobless lol.")
+
+def subnet3Wrong():
+  clearScreen()
+  typingPrint("Ole Smitty: \"Muahahah. That was the wrong answer, and that means your soul is mine.\n")
+  typingPrint("He eats sucks the soul out of you as he cackles.\n")
+  typingPrint("You die and lose.\"")
+
+def subnet3():
+  clearScreen()
+  typingPrint("Ole Smitty: \"How many subnets does a network address of 192.168.0.0 /28 create?\"")
+  userInput = input()
+  if userInput == "16":
+    subnet3Right()
+  else:
+    subnet3Wrong()
+
+def subnet2Right():
+  clearScreen()
+  typingPrint("Ole Smitty: \"Okay, clearly I've been going too easy. This next one is a doozy.\"")
+  subnet3()
+  
+def subnet2Wrong():
+  clearScreen()
+  typingPrint("Ole Smitty: \"Muahahah. That was the wrong answer, and that means your soul is mine.\n")
+  typingPrint("He eats sucks the soul out of you as he cackles.\n")
+  typingPrint("You die and lose.\"")
+  
+def subnet2():
+  clearScreen()
+  typingPrint('Ole Smitty: "What is the IP address range for Class C addresses?\n')
+  typingPrint("1: 0.0.0.0 to 127.255.255.255\n")
+  typingPrint("2: 128.0.0.0 to 191.255.255.255\n")
+  typingPrint("3: 192.0.0.0 to 223.255.255.255\n")
+  typingPrint("4: 224.0.0.0 to 239.255.255.255\"\n")
+  actions = ["1", "2", "3", "4"]
+  userInput = ""
+  while userInput not in actions:
+    typingPrint("Options: 1/2/3/4\n")
+    userInput = input()
+    if userInput == "3":
+      subnet2Right()
+    elif userInput == "2" or "1" or "4":
+      subnet2Wrong()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
+def subnet1Wrong():
+  clearScreen()
+  typingPrint('Ole Smitty: "Muahahah. That was the wrong answer, and that means your soul is mine.\n')
+  typingPrint("He eats sucks the soul out of you as he cackles.\n")
+  typingPrint("You die and lose.\"")
+  
+def subnet1Right():
+  clearScreen()
+  typingPrint("\"Hmm, so you got the first one correct. You're one step closer to a new life. Time for the next question.\"\n")
+  subnet2()
+
+def subnet1():
+  clearScreen()
+  typingPrint("Ole Smitty: \"On a Class A subnet, how many hosts would there be in a single subnet with a slash notation of /25?\"")
+  userInput = input()
+  if userInput == "256":
+    subnet1Right()
+  else:
+    subnet1Wrong()
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def floor4ElevatorRight():
+  global name
+  clearScreen()
   typingPrint(name + ": \"That's all I needed... you're cooked brother.\" You feel a shove in your back which propels you into the grimy elevator. Your consciousness fades in and out... then suddenly the elevator falls from beneath you, and you pass out.\n")
   typingPrint("???: \"It's so nice to meet you. I enjoy watching my prey struggle.\"\n")
   typingPrint(name + ": \"huh, what's going on?\"\n")
@@ -257,7 +345,8 @@ def floor4ElevatorRight():
   typingPrint(name + ": \"NO. IT'S NOT POSSIBLE.\"\n")
   typingPrint("Ole Smitty: \"Believe it, Sonny. There's no point in denying the truth. It may very well just cost you your life. Now, because I am so gracious and love all my employees, I will give you a chance to escape with a good reference letter and a job opportunity elsewhere.\"\n")
   typingPrint(name + ": \"Please... what do I have to do.\"\n")
-  typingPrint("Ole Smitty: \"You must solve 3 subnetting problems. If you even miss one... it's joever.\"\n")typingPrint(name + ": \"Zounds! I need to get out of here. Give me the first problem.\"\n")
+  typingPrint("Ole Smitty: \"You must solve 3 subnetting problems. If you even miss one... it's joever.\"\n")
+  typingPrint(name + ": \"Zounds! I need to get out of here. Give me the first problem.\"\n")
   typingPrint("Ole Smitty: \"As you wish. Here's the first problem.\"")
   subnet1()
   
@@ -266,6 +355,7 @@ def floor4Elevator():
   i = 0
   randNum4 = random.randint(0,65536)
   binNum4 = bin(randNum4)[2:].zfill(16) # [2:] takes the first two characters off the binary string (0b) and zfill pads the front with 0's until it is 4-digits long
+  clearScreen()
   typingPrint(name + ": \"Let's go to the 5th floor so you can meet the boss. I'm sure he'd love to see his new intern.\"\n")
   typingPrint(name + ": \"That sounds like a plan.\"\n")
   typingPrint("*He talks about this so casually, but I'm pretty nervous. My mind feels like it's rotting, and my stomach is turning. I think I'm going to be sick.*\n")
@@ -284,16 +374,19 @@ def floor4Elevator():
     
   
 def staticRouteWrong():
+  clearScreen()
   typingPrint("Nate: *incorrect buzzer sound effect*\"Go again.\"n")
   staticRoute()
   
 def staticRouteRight():
   global name
+  clearScreen()
   typingPrint("Nate: \"All done with the routers, fantastic job!\"n")
   typingPrint(name + ": \"Thanks again, Nate. It's really nothing. I'm just doing my job.\"\n")
   floor4Elevator()
 
 def staticRoute():
+  clearScreen()
   typingPrint("What is the command to configure a basic static route?\n")
   typingPrint("1: ip route outside-address subnet-mask inside-address\n")
   typingPrint("2: ip route inside-address subnet-mask outside-address\n")
@@ -310,15 +403,18 @@ def staticRoute():
     else:
       typingPrint("Please enter a valid option.\n")
 def natRight():
+  clearScreen()
   typingPrint("Nate: \"Shweet! On to the final problem of the floor.\"\n")
   staticRoute()
   
 def natWrong():
+  clearScreen()
   typingPrint("Nate: \"Nah, fam. Try again.\"\n")
 
 
 def nat():
   global name
+  clearScreen()
   typingPrint(name + "\"Got it, Nate. Thanks.\"\n")
   typingPrint("You are already logged into the router, so you enter the exit command to return to global configuration mode.\n")
   typingPrint(name + "*It looks like I need to create a static NAT configuration.*\n")
@@ -340,15 +436,18 @@ def nat():
       typingPrint("Please enter a valid option.\n")
 
 def dhcpRight():
+  clearScreen()
   typingPrint("Nate: \"Oh my glob, that was fantastical! let's move on to the next task: configuring NAT.\"\n")
   nat()
 
 def dhcpWrong():
+  clearScreen()
   typingPrint("Nate: \"Try that again... you can do better.\"\n")
   dhcp()
 
 
 def dhcp():
+  clearScreen()
   typingPrint(name + ": *okay, first up. DHCP*\n")
   typingPrint("You log into the router and enter the necessary passwords. It turns out this router has received an IP address via DHCP, however none of the clients connected have access to DHCP. What command would allow this router to pass on DHCP services to the rest of the network?\n")
   typingPrint("1: ip dhcp relay-address address\n")
@@ -367,6 +466,7 @@ def dhcp():
       typingPrint("Please enter a valid option.\n")
 
 def floor3ElevatorRight():
+  clearScreen()
   typingPrint("Nate: \"Okay, nice. Let's continue.\"\n")
   typingPrint("Your legs become heavier as the elevator doors open. It feels as if gravity increased two fold. Once your second foot enters the elevator, it shoots up to the next floor, doors still open.\n\n")
   typingPrint(name + ": \"AHH, WHAT THE BISCUITS!\"\n")
@@ -428,12 +528,14 @@ def stpRight():
       typingPrint("Please enter a valid option.\n")
 
 def stpWrong():
+  clearScreen()
   typingPrint("Nate: \"No, try it again.\"\n")
   maxPortsRight()
 
 
 def maxPortsRight():
   global name
+  clearScreen()
   typingPrint("Nate: \"Step one is done. Now on to STP.\"\n")
   typingPrint(name + ": *It seems to be running normal, but something's not right. Why is one link down when four ports are occupied.*\n")
   typingPrint("What command could be used to make the link operational?\n")
@@ -455,11 +557,13 @@ def maxPortsRight():
 
 
 def maxPortsWrong():
+  clearScreen()
   typingPrint("Nate: \"Even I know that one. Try again.\"\n")
 
 
 def switch1Right():
   global name
+  clearScreen()
   typingPrint("Nate: \"Correctamungo! Now just swap out that power cable for a spare in the closet.\"\n")
   typingPrint(name + "\"Of course!\"\n")
   typingPrint("As you approach the closet, stench which was originally claimed as a fart becomes more prominent. You open the door and a skeleton falls next to your feet.\"\n")
@@ -471,6 +575,8 @@ def switch1Right():
   typingPrint("Nate: \"Now I also know we also need to update the max number of allowed ports and ensure STP and Etherchannel are operational.\nLuckily, we have a subscription to Cisco DNA center so we can manage multiple switches from one computer.")
   typingPrint("You boot up DNA center on the computer beside the massive rack of switches and open the terminal.\n")
   typingPrint(name + "\"Okay, first I have to change the max number of ports.\"\n")
+  clearScreen()
+  
   typingPrint("\"What command can accomplish this?\"\n")
   typingPrint("1: switchport port-security\n")
   typingPrint("2: switchport port-security violation\n")
@@ -490,10 +596,12 @@ def switch1Right():
 
 
 def switch1Wrong():
+  clearScreen()
   typingPrint("Nate: \"Erm. Try again.\"\n")
 
 
 def switch():
+  clearScreen()
   typingPrint("Nate: \"First off, this switch has a blinking amber power light. Doesn't seem pretty normal, I want you to find the problem. What does this light indicate?\"\n")
   typingPrint("1: Indicates the switch is working, but not receiving power properly.\n")
   typingPrint("2: The switch is not receiving enough power.\n")
@@ -514,6 +622,7 @@ def switch():
 
 def floor2ElevatorRight():
   global name
+  clearScreen()
   typingPrint("As you step into the elevator, you can feel an ominous force lurking. It almost feels as if someone is inside your brain.\"\n")
   typingPrint(name + ": y/n: \"I think I'm starting to develop a headache. Is it okay if I go home for the day. I don't want to risk getting anyone sick.\"\n")
   typingPrint("Nate: \"No, worries! You're the only one who's working on the next two floors.\"\n")
@@ -531,7 +640,7 @@ def floor2Elevator():
   i = 0
   randNum2 = random.randint(0,15)
   binNum2 = bin(randNum2)[2:].zfill(4) # [2:] takes the first two characters off the binary string (0b) and zfill pads the front with 0's until it is 4-digits long
-  print(binNum2)
+  clearScreen()
   typingPrint("Nate: \"Now that we're reaching the higher floors, there are greater security measures. You see next to the door, there is a 4-digit code. The code only consists of 1's and 0's.\n")
   typingPrint("All you have to do is convert the given decimal number into binary. Give it a try. The number for you is " + str(randNum2) + ".\"\n")
   userInput = input("Enter code: ")
@@ -549,6 +658,7 @@ def floor2Elevator():
 
 def t3Right():
   global name
+  clearScreen()
   typingPrint("Nate: \"Fantástico! Whoops, accidentally switched to Spanish. I've been watching too much Dora lately.\"\n")
   typingPrint(name +": \"Muy bien, Nate.\"\n")
   typingPrint("Nate: \"Gracias, vamos arriba!\"\n")
@@ -558,6 +668,7 @@ def t3Right():
 def t3Wrong():
   global lives
   lives -= 1
+  clearScreen()
   typingPrint("Nate: \"This is crazy man. How do you still not know the OSI model? It's so important to your job. Let's just move on to the next floor.\"\n")
   floor2Elevator()
 
@@ -769,9 +880,8 @@ def buildPC():
           finishedPC()
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-floor4ElevatorRight()
 
-'''if __name__ == "__main__":
+if __name__ == "__main__":
   clearScreen()
   typingPrint("\"Today's the day! I finally landed a tech internship after three years.\n")
   typingPrint("It's my time to shine!\" You leap out of your car once your\n")
@@ -788,4 +898,3 @@ floor4ElevatorRight()
   typingPrint("Nate: \"Yup, I would probably recognize you too if you had your\n")
   typingPrint("camera on in the online meeting. Let's continue this conversation inside.\n")
   introScene()
-  '''
