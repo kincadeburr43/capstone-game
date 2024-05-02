@@ -243,9 +243,225 @@ def lobbyElevator():
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def floor2ElevatorRight():
-  print("awesome sauce")
+def natRight():
+  typingPrint("Nate: \"Try that again... you can do better.\"\n")
+  
+def natWrong():
+  typingPrint("Nate: \"Nah, fam. Try again.\"\n")
 
+
+def nat():
+  typingPrint(name + "\"Got it, Nate. Thanks.\"\n")
+
+  typingPrint("You are already logged into the router, so you enter the exit command to return to global configuration mode.\n")
+
+  typingPrint(name + "*It looks like I need to create a static NAT configuration.*\n")
+
+  typingPrint("What is the command used to create a static inside NAT configuration?\n")
+  typingPrint("1: ip nat translation inside address\n")
+  typingPrint("2: ip nat inside\n")
+  typingPrint("3: ip nat inside source static address\n")
+  
+  actions = ["1", "2", "3"]
+  userInput = ""
+  while userInput not in actions:
+    typingPrint("Options: 1/2/3\n")
+    userInput = input()
+    if userInput == "3":
+      natRight()
+    elif userInput == "2" or "1":
+      natWrong()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
+def dhcpRight():
+  typingPrint("Nate: \"Oh my glob, that was fantastical! let's move on to the next task: configuring NAT.\"\n")
+  nat()
+
+def dhcpWrong():
+  typingPrint("Nate: \"Try that again... you can do better.\"\n")
+  dhcp()
+
+
+def dhcp():
+  typingPrint(name + ": *okay, first up. DHCP*\n")
+  typingPrint("You log into the router and enter the necessary passwords. It turns out this router has received an IP address via DHCP, however none of the clients connected have access to DHCP. What command would allow this router to pass on DHCP services to the rest of the network?\n")
+  typingPrint("1: ip dhcp relay-address address\n")
+  typingPrint("2: ip dhcp helper-address address\n")
+  typingPrint("3: ip helper-address address\n")
+  actions = ["1", "2", "3"]
+  userInput = ""
+  while userInput not in actions:
+    typingPrint("Options: 1/2/3\n")
+    userInput = input()
+    if userInput == "3":
+      dhcpRight()
+    elif userInput == "2" or "1":
+      dhcpWrong()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
+def floor3ElevatorRight():
+  typingPrint("Nate: \"Okay, nice. Let's continue.\"\n")
+  typingPrint("Your legs become heavier as the elevator doors open. It feels as if gravity increased two fold. Once your second foot enters the elevator, it shoots up to the next floor, doors still open.\n\n")
+  typingPrint(name + ": \"AHH, WHAT THE BISCUITS!\"\n")
+  typingPrint("*ding*\n")
+  typingPrint("Nate: \"Sorry about that. The elevator guy is coming in tomorrow.\"\n")
+  typingPrint(name + ": *What kind of elevator is this?*\n")
+  typingPrint(name +": \"Yeah, alright.\"\n")
+  typingPrint("Nate: \"Let's just get off. It's not the most safe to be on there. I just want to make sure you get the whole experience.\"\n")
+  typingPrint("Unease fills your body as you exit the elevator. The desecrated routers are barely screwed in, and the racks are disheveled as ever. There also seems to be an ominous red stain upon the wall in front of you.\n\n")
+  typingPrint("y/n: *Maybe someone spilled their lunch.*\n")
+  typingPrint("Nate: \"Don't worry about that stain, it's really nothing. You should be more worried about your next tasks. First, I need you to fix our DHCP server, then you will configure NAT, and finally, configure a new static route.\"")
+  dhcp()
+def floor3Elevator():
+  global name
+  i = 0
+  randNum3 = random.randint(0,255)
+  binNum3 = bin(randNum3)[2:].zfill(8) # [2:] takes the first two characters off the binary string (0b) and zfill pads the front with 0's until it is 4-digits long
+  clearScreen()
+  typingPrint("Nate: \"Fire, onward to the third floor. You didn\'t see anything in that closet, right?\"\n")
+  typingPrint(name + "\": No, no. no. Don\'t get it twisted. I didn\'t see anything. Just the switch cable.\"\n")
+  typingPrint("Nate: \"Okay, just checking. I lost something recently and haven't been able to find it. Anyway, let's go to the elevator.\"\n")
+  typingPrint(name + "*The elevator seems to have another binary code. This time it is 8 bits long, otherwise known as one byte. The given number is " + str(randNum3) + ". What would this be in binary?*\n")
+ 
+  userInput = input("Enter code: ")
+  while userInput != binNum3:
+    typingPrint("Nate: \"It's not that hard bro. Keep trying.\"\n")
+    userInput = input("Enter code: ")
+    i += 1
+    if i >= 2:
+        typingPrint("Nate: \"Ngl. You kinda suck at this. You're fired.\"\n(Bad Binary Ending #2)")
+        break
+  if userInput == binNum3:
+    floor3ElevatorRight()
+
+
+
+
+
+def stpRight():
+  typingPrint("Nate: \"Swagalicious, my croney! On to the final task... etherchannel.\"\n")
+  typingPrint("*I'm pretty sure that's the technique used for link aggregation. It allows multiple connections to act as one.*\n")
+  typingPrint("You enter the show etherchannel command in privileged exec mode to check the status of the links.\n")
+  typingPrint("*Zounds, this is a problem. G0/1 and G0/2 are on VLAN 1, instead of 99. Let's change them to VLAN 99.\n")
+  typingPrint("You enter the first two commands:\ninterface range g0/1-2\nswitchport mode access\n")
+  typingPrint("YWhat's the last command to enter?\n")
+  typingPrint("1: switchport access vlan 99\n")
+  typingPrint("2: switchport access default-vlan 99\n")
+  typingPrint("3: switchport trunk vlan 99\n")
+  actions = ["1", "2", "3"]
+  userInput = ""
+  while userInput not in actions:
+    typingPrint("Options: 1/2/3\n")
+    userInput = input()
+    if userInput == "1":
+      floor3Elevator()
+    elif userInput == "2" or "3":
+      maxPortsRight()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
+def stpWrong():
+  typingPrint("Nate: \"No, try it again.\"\n")
+  maxPortsRight()
+
+
+def maxPortsRight():
+  global name
+  typingPrint("Nate: \"Step one is done. Now on to STP.\"\n")
+  typingPrint(name + ": *It seems to be running normal, but something's not right. Why is one link down when four ports are occupied.*\n")
+  typingPrint("What command could be used to make the link operational?\n")
+  typingPrint("1: shutdown\n")
+  typingPrint("2: no shutdown\n")
+  typingPrint("3: port-status up\n")
+  actions = ["1", "2", "3"]
+  userInput = ""
+  while userInput not in actions:
+    typingPrint("Options: 1/2/3\n")
+    userInput = input()
+    if userInput == "2":
+      stpRight()
+    elif userInput == "1" or "3":
+      stpWrong()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
+
+
+def maxPortsWrong():
+  typingPrint("Nate: \"Even I know that one. Try again.\"\n")
+
+
+def switch1Right():
+  global name
+  typingPrint("Nate: \"Correctamungo! Now just swap out that power cable for a spare in the closet.\"\n")
+  typingPrint(name + "\"Of course!\"\n")
+  typingPrint("As you approach the closet, stench which was originally claimed as a fart becomes more prominent. You open the door and a skeleton falls next to your feet.\"\n")
+  typingPrint(name + ": \"HOLY CRACKERS AND CHEESE!\"\n")
+  typingPrint("Nate: \"What's wrong " + name + "?")
+  typingPrint(name + ": *just try to act normal, I need this position*\nOh nothing, I just thought I saw a spider. I have arachnophobia.*\n")
+  typingPrint("*I really hope they just forgot to take down Halloween decorations.*\n")
+  typingPrint("You swiftly grab the power cord, return to Nate, and swap the cables. \n")
+  typingPrint("Nate: \"Now I also know we also need to update the max number of allowed ports and ensure STP and Etherchannel are operational.\nLuckily, we have a subscription to Cisco DNA center so we can manage multiple switches from one computer.")
+  typingPrint("You boot up DNA center on the computer beside the massive rack of switches and open the terminal.\n")
+  typingPrint(name + "\"Okay, first I have to change the max number of ports.\"\n")
+  typingPrint("\"What command can accomplish this?\"\n")
+  typingPrint("1: switchport port-security\n")
+  typingPrint("2: switchport port-security violation\n")
+  typingPrint("3: switchport port-security maximum (#)\n")
+  actions = ["1", "2", "3"]
+  userInput = ""
+  while userInput not in actions:
+    typingPrint("Options: 1/2/3\n")
+    userInput = input()
+    if userInput == "3":
+      maxPortsRight()
+    elif userInput == "2" or "1":
+      maxPortsWrong()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
+
+
+def switch1Wrong():
+  typingPrint("Nate: \"Erm. Try again.\"\n")
+
+
+def switch():
+  typingPrint("Nate: \"First off, this switch has a blinking amber power light. Doesn't seem pretty normal, I want you to find the problem. What does this light indicate?\"\n")
+  typingPrint("1: Indicates the switch is working, but not receiving power properly.\n")
+  typingPrint("2: The switch is not receiving enough power.\n")
+  typingPrint("3: Power over Ethernet is working properly.\n")
+  actions = ["1", "2", "3"]
+  userInput = ""
+  while userInput not in actions:
+    typingPrint("Options: 1/2/3\n")
+    userInput = input()
+    if userInput == "1":
+      switch1Right()
+    elif userInput == "2" or "3":
+      switch1Wrong()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
+
+
+def floor2ElevatorRight():
+  global name
+  typingPrint("As you step into the elevator, you can feel an ominous force lurking. It almost feels as if someone is inside your brain.\"\n")
+  typingPrint(name + ": y/n: \"I think I'm starting to develop a headache. Is it okay if I go home for the day. I don't want to risk getting anyone sick.\"\n")
+  typingPrint("Nate: \"No, worries! You're the only one who's working on the next two floors.\"\n")
+  typingPrint(name +": \"What?\"\n")
+  typingPrint("Nate: \"Well, besides me. But most of the time I'm helping out the boss with his tech issues.\"\n")
+  typingPrint(name +": \"Interesting.\"\n*ding* The elevator doors open and a rancid scent pervades your nostrils.")
+  typingPrint("Nate: \"Died? No one died in here.\"\n")
+  typingPrint(name +": \"What's that smell then?\"\n")
+  typingPrint("Nate: \"Sorry, I farted. Let's go somewhere else.\"\n")
+  typingPrint(name +": \"Good idea.\"\n")
+  typingPrint("Nate: \"Anyway, this is the switching room. We keep all of our switches here alongside a few test computers. Let's go over to switch 1.\"\n")
+  switch()
+  
 def floor2Elevator():
   i = 0
   randNum2 = random.randint(0,15)
@@ -436,6 +652,7 @@ def hypervisorQuestion():
 
 
 def finishedPC():
+  global name
   clearScreen()
   typingPrint(name + ": \"It's all finished!\"\n")
   typingPrint("Janet: \"Thank you so much!\"\n")
@@ -449,6 +666,7 @@ def finishedPC():
 
 def brokenPC():
   clearScreen()
+  global name
   global lives
   lives -= 1
   typingPrint("Janet: \"NOOOO, MY BEAUTIFUL PC. YOU ARE UNQUALIFIED. NATE, GET THEM OUT OF HERE!!!\"")
@@ -486,8 +704,9 @@ def buildPC():
           finishedPC()
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+floor3ElevatorRight()
 
-if __name__ == "__main__":
+'''if __name__ == "__main__":
   clearScreen()
   typingPrint("\"Today's the day! I finally landed a tech internship after three years.\n")
   typingPrint("It's my time to shine!\" You leap out of your car once your\n")
@@ -504,3 +723,4 @@ if __name__ == "__main__":
   typingPrint("Nate: \"Yup, I would probably recognize you too if you had your\n")
   typingPrint("camera on in the online meeting. Let's continue this conversation inside.\n")
   introScene()
+  '''
