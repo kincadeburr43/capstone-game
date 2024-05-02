@@ -231,14 +231,73 @@ def lobbyElevator():
   typingPrint("Nate: \"Okay, let's get started. I'll give you about two hours to build it.\"\n")
   typingPrint(name + ": \"Sounds like a deal.\"\n")
   buildPC()
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def troubleshoot2():
+  pass
+
+def explainOSI():
+  typingPrint("Nate: *sigh* \"You're pretty incompetent, you know that? Anyway, the OSI model or the Open Systems Interconnection is a more organized way to understand how network protocols and communication between devices works.\n")
+  typingPrint("There are seven layers (starting from the bottom): Physical, Data Link, Network, Transport, Session, Presentation, Application. The data link layer packages the 1s and 0s from the physical layer into a nice frame. The network layer takes care of addressing messages to the right place.\n")
+  typingPrint("This is where IP lies. The transport layer is responsible for making sure the IP packet arrives at its destination properly. The session layer establishes a session to send the messages over. The presentation layer formats data so it can be used by the application layer.\n")
+  typingPrint("The application layer deals with the user interface of the software. Hopefully, you can use this knowledge to help troubleshoot the other computers. Let's get back to work now.\"\n")
+  troubleshoot2()
+
+def t1Right():
+  typingPrint("Nate: \"Stellar! Let's move on to the next problem.\"\n")
+  troubleshoot2()
+
+def t1Wrong():
+  typingPrint("Nate: \"No, it should be bottom-up since we're dealing with a potentially physical layer issue.\nThe physical layer is the bottom layer of the OSI model and encapsulates all functionality of physical parts such as cabling, electronics, and Network Interface Cards.\nPlease don't tell me you need me to explain the OSI model.\"\n")
+  explainOSI()
+
+def troubleshoot1():
+  typingPrint("Nate: \"This is Demarco. I'll let him explain what's been happening.\"\n")
+  typingPrint("Demarco: \"Hello, Nate told me you're here to fix my computer. I've been having problems with accessing the internet.\n")
+  typingPrint("No matter what ethernet cable I use, I cannot connect to the internet.\"\n")
+  typingPrint("Nate: \"What troubleshooting method should be used in this situation?\"\n")
+  typingPrint("1: Top-Down\n")
+  typingPrint("2: Bottom-Up\n")
+  typingPrint("3: Divide-and-conquer\n")
+  actions = ["1", "2", "3"]
+  userInput = ""
+  while userInput not in actions:
+    userInput = input("Enter Answer: ")
+    if userInput == "2":
+      t1Right()
+    elif userInput == "1":
+      t1Wrong()
+    elif userInput == "3":
+      t1Wrong()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
+def level1Elevator():
+  global name
+  typingPrint("Nate: \"That's all I have for you on this floor. Let's get back to the elevator.\"\n")
+  typingPrint("As the elevator doors open, the feeling of impending doom consumes your mind. A purple haze seems to leak from the interior, yet Nate is unphased.\n")
+  typingPrint("Nate: \"Is something wrong " + name + "?\"\n")
+  typingPrint(name + ": \"Do you not see that?\"\n")
+  typingPrint("Nate: \"See what?\"\n")
+  typingPrint(name + ": \"Nevermind then...\"\n")
+  typingPrint("Nate: \"Okay, maybe you're just nervous on the first day.\"\n")
+  typingPrint(name + ": \"Yeah, that's probably it... sorry about that.\"\n")
+  typingPrint("*ding*\nThe elevator doors open to reveal an identical layout of the first floor.\n")
+  typingPrint("Nate: \"This is our finance department. Some of our employees are having some problems with their PCs, so I would like you to troubleshoot them.\"\n")
+  troubleshoot1()
+
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def wrongHypervisor():
   global lives
   lives -= 1
+  typingPrint("Nate: \"No, it's definitely a type 2 hypervisor. The difference is that a type 1 hypervisor is installed directly onto the hardware of a server/computer.\"\n")
+  typingPrint("However, a type 2 hypervisor is installed on the operating system. We are just trying to download a hypervisor on to her built computer in this case.\"\n")
   
 def rightHypervisor():
-  pass
+  typingPrint("Nate: \"Awesome job! I award you a gold star for that.\"\n")
+  level1Elevator()
 
 def hypervisorQuestion():
   typingPrint("Should we use a type 1 or type 2 hypervisor?\"\n")
