@@ -1,6 +1,15 @@
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'''
+THE INTERNSHIP
+Joshua Butler and Kincade Burroughs
+Cisco Senior Capstone Project
+'''
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #necessary imports
 import random #adds the ability to use random numbers
 import time, os, sys
+
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 name = ""
@@ -9,6 +18,7 @@ weight = 0
 explore = False
 cleetusTalk = False
 lives = 5
+
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def terminalPrint(text):
@@ -19,11 +29,10 @@ def terminalPrint(text):
     
 def typingPrint(text):
   for char in text:
-    sys.stdout.write(char)
-    sys.stdout.flush()
-    time.sleep(0.03)
+    print(char, end='', flush = True)
+    time.sleep(0.04)
     
-def terminalPrint(text):
+def terminalInput(text):
   for char in text:
     sys.stdout.write(char)
     sys.stdout.flush()
@@ -214,7 +223,6 @@ def lobbyElevator():
   global name
   explore = True
   clearScreen()
-  
   typingPrint("Cleetus: \"Enjoy your first day!\"\n")
   typingPrint(name + ": \"Sorry for taking so long, Nate.\"\n")
   typingPrint("Nate: \"K, let's get going.\"\n")
@@ -222,6 +230,7 @@ def lobbyElevator():
   typingPrint("You move past him and swipe your keycard across the scanner next to the door and enter. Nate follows.\n")
   typingPrint("Nate: \"You know that was an RFID reader you used. It wirelessly reads the RFID tag your card emits and compares your data against our employee database.\"\n")
   typingPrint(name + ": \"I didn't, thank you for this valuable information.\"\n")
+  clearScreen()
   typingPrint("*ding*\nAs the elevator doors open, you let out a sigh of relief.\n" + name + ": *Man, Nate is odd.* \n")
   typingPrint("Nate: \"Here's the 1st floor. This is our customer service floor where our lovely employees help customers through their problems when Cleetus is not available.\n")
   typingPrint("Your first task is to build Janet's new computer. She's our top employee on this level, so she needs the best equipment at all times. Come say hi!\"\n")
@@ -234,10 +243,115 @@ def lobbyElevator():
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+def floor2ElevatorRight():
+  print("awesome sauce")
+
+def floor2Elevator():
+  i = 0
+  randNum2 = random.randint(0,15)
+  binNum2 = bin(randNum2)[2:].zfill(4) # [2:] takes the first two characters off the binary string (0b) and zfill pads the front with 0's until it is 4-digits long
+  print(binNum2)
+  typingPrint("Nate: \"Now that we're reaching the higher floors, there are greater security measures. You see next to the door, there is a 4-digit code. The code only consists of 1's and 0's.\n")
+  typingPrint("All you have to do is convert the given decimal number into binary. Give it a try. The number for you is " + str(randNum2) + ".\"\n")
+  userInput = input("Enter code: ")
+  while userInput != binNum2:
+    typingPrint("You try swiping your card, but no money. Let's try another code.\n")
+    userInput = input("Enter code: ")
+    i += 1
+    if i >= 2:
+        typingPrint("Nate: \"Clearly you don't know your stuff. Now we're locked out. I guess we just have to leave.\"\n(Bad Binary Ending)")
+        break
+  if userInput == binNum2:
+    floor2ElevatorRight()
+      
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def t3Right():
+  global name
+  typingPrint("Nate: \"Fantástico! Whoops, accidentally switched to Spanish. I've been watching too much Dora lately.\"\n")
+  typingPrint(name +": \"Muy bien, Nate.\"\n")
+  typingPrint("Nate: \"Gracias, vamos arriba!\"\n")
+  typingPrint(name +": \"Sí.\"\n")
+
+
+def t3Wrong():
+  global lives
+  lives -= 1
+  typingPrint("Nate: \"This is crazy man. How do you still not know the OSI model? It's so important to your job. Let's just move on to the next floor.\"\n")
+  floor2Elevator()
+
+
+def troubleshoot3():
+  global name
+  clearScreen()
+  typingPrint("Nate: \"This is Jeff. Say hi to " + name + ", Jeff\"\n")
+  typingPrint("Jeff: \"Hi, " + name + ".\"\n")
+  typingPrint("Nate: \"Jeff, what problem did you have with your computer again.\"\n")
+  typingPrint("Jeff: \"When I try to search for anything on my browser, the entire webpage looks like it was put through a washing machine.\"\n")
+  typingPrint("Nate: \"What layer of the OSI model would this problem fall upon?\"\n")
+  typingPrint("Jeff: \"I don't know, I just do the taxes.\"\n")
+  typingPrint("Nate: \"That's enough from you Jeff.\"\n")
+  actions = ["1", "2", "3", "4", "5", "6", "7"]
+  userInput = ""
+  while userInput not in actions:
+    userInput = input("Enter Answer: ")
+    if userInput == "7":
+      t3Right()
+    elif userInput == "1" or "2" or "4" or "5" or "6" or "3":
+      t3Wrong()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
+
+def noExplainOSI():
+  clearScreen()
+  typingPrint("Nate: \"Okay then. Let's get to the last person.\"\n")
+  troubleshoot3()
+
+
+def t2Right():
+  global name
+  clearScreen()
+  typingPrint("Nate: \"Woah, nice job!\"\n")
+  typingPrint("Clarisse: \"Cheers, luv!\"\n")
+  typingPrint("\"Let's keep it moving " + name + ".\"\n")
+
+
+def t2Wrong():
+  clearScreen()
+  global lives
+  lives -= 1
+  typingPrint("Nate: No, the problem was at the network layer since it deals with DHCP and IP addresses which are layer three protocols.\nDo you really need me to explain the OSI layers?\"\n")
+  actions = ["yes", "no"]
+  userInput = ""
+  while userInput not in actions:
+    typingPrint("Options: yes/no")
+    userInput = input("Enter Answer: ")
+    if userInput == "yes":
+      explainOSI()
+    elif userInput == "no":
+      noExplainOSI()
+    else:
+      typingPrint("Please enter a valid option.\n")
+
 def troubleshoot2():
-  pass
+  clearScreen()
+  typingPrint("Nate: \"Next up, we have Clarisse. (She's British by the way)\"\n")
+  typingPrint("Clarisse: \"Ello luv, I've got a slight problem with my desktop. I cannot seem to receive an address from the DHCP server. All I get is an APIPA address, y'know, one of those \"169.254...\" ones.\"\n")
+  typingPrint("Nate: \"What layer of the OSI model does this issue fall under?\"\n1: Physical\n2: Data Link\n3: Network\n4: Transport\n5: Session\n6: Presentation\n7: Application\n")
+  actions = ["1", "2", "3", "4", "5", "6", "7"]
+  userInput = ""
+  while userInput not in actions:
+    userInput = input("Enter Answer: ")
+    if userInput == "3":
+      t2Right()
+    elif userInput == "1" or "2" or "4" or "5" or "6" or "7":
+      t2Wrong()
+    else:
+      typingPrint("Please enter a valid option.\n")
 
 def explainOSI():
+  clearScreen()
   typingPrint("Nate: *sigh* \"You're pretty incompetent, you know that? Anyway, the OSI model or the Open Systems Interconnection is a more organized way to understand how network protocols and communication between devices works.\n")
   typingPrint("There are seven layers (starting from the bottom): Physical, Data Link, Network, Transport, Session, Presentation, Application. The data link layer packages the 1s and 0s from the physical layer into a nice frame. The network layer takes care of addressing messages to the right place.\n")
   typingPrint("This is where IP lies. The transport layer is responsible for making sure the IP packet arrives at its destination properly. The session layer establishes a session to send the messages over. The presentation layer formats data so it can be used by the application layer.\n")
@@ -245,14 +359,19 @@ def explainOSI():
   troubleshoot2()
 
 def t1Right():
+  clearScreen()
   typingPrint("Nate: \"Stellar! Let's move on to the next problem.\"\n")
   troubleshoot2()
 
 def t1Wrong():
+  clearScreen()
+  global lives
+  lives -= 1
   typingPrint("Nate: \"No, it should be bottom-up since we're dealing with a potentially physical layer issue.\nThe physical layer is the bottom layer of the OSI model and encapsulates all functionality of physical parts such as cabling, electronics, and Network Interface Cards.\nPlease don't tell me you need me to explain the OSI model.\"\n")
   explainOSI()
 
 def troubleshoot1():
+  clearScreen()
   typingPrint("Nate: \"This is Demarco. I'll let him explain what's been happening.\"\n")
   typingPrint("Demarco: \"Hello, Nate told me you're here to fix my computer. I've been having problems with accessing the internet.\n")
   typingPrint("No matter what ethernet cable I use, I cannot connect to the internet.\"\n")
@@ -266,14 +385,13 @@ def troubleshoot1():
     userInput = input("Enter Answer: ")
     if userInput == "2":
       t1Right()
-    elif userInput == "1":
-      t1Wrong()
-    elif userInput == "3":
+    elif userInput == "1" or "3":
       t1Wrong()
     else:
       typingPrint("Please enter a valid option.\n")
 
 def level1Elevator():
+  clearScreen()
   global name
   typingPrint("Nate: \"That's all I have for you on this floor. Let's get back to the elevator.\"\n")
   typingPrint("As the elevator doors open, the feeling of impending doom consumes your mind. A purple haze seems to leak from the interior, yet Nate is unphased.\n")
@@ -290,16 +408,19 @@ def level1Elevator():
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def wrongHypervisor():
+  clearScreen()
   global lives
   lives -= 1
   typingPrint("Nate: \"No, it's definitely a type 2 hypervisor. The difference is that a type 1 hypervisor is installed directly onto the hardware of a server/computer.\"\n")
   typingPrint("However, a type 2 hypervisor is installed on the operating system. We are just trying to download a hypervisor on to her built computer in this case.\"\n")
   
 def rightHypervisor():
+  clearScreen()
   typingPrint("Nate: \"Awesome job! I award you a gold star for that.\"\n")
   level1Elevator()
 
 def hypervisorQuestion():
+  clearScreen()
   typingPrint("Should we use a type 1 or type 2 hypervisor?\"\n")
   actions = ["1", "2"]
   userInput = ""
@@ -315,6 +436,7 @@ def hypervisorQuestion():
 
 
 def finishedPC():
+  clearScreen()
   typingPrint(name + ": \"It's all finished!\"\n")
   typingPrint("Janet: \"Thank you so much!\"\n")
   typingPrint("Nate: \"What a star. Now... let's see if you can install the right hypervisor on her computer.\"\n")
@@ -326,11 +448,15 @@ def finishedPC():
 
 
 def brokenPC():
+  clearScreen()
   global lives
   lives -= 1
   typingPrint("Janet: \"NOOOO, MY BEAUTIFUL PC. YOU ARE UNQUALIFIED. NATE, GET THEM OUT OF HERE!!!\"")
+  typingPrint("Nate: \"Don't worry, Janet. We'll buy you a new one from " + name + "'s non-existent paycheck.\"\n")
+
 
 def buildPC():
+  clearScreen()
   pcFails = 0
   pcWins = 0
   steps = [1, 4, 5, 3, 6, 7, 2, 8]
@@ -361,7 +487,7 @@ def buildPC():
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#if __name__ == "__main__":
+if __name__ == "__main__":
   clearScreen()
   typingPrint("\"Today's the day! I finally landed a tech internship after three years.\n")
   typingPrint("It's my time to shine!\" You leap out of your car once your\n")
@@ -378,5 +504,3 @@ def buildPC():
   typingPrint("Nate: \"Yup, I would probably recognize you too if you had your\n")
   typingPrint("camera on in the online meeting. Let's continue this conversation inside.\n")
   introScene()
-    
-buildPC()
