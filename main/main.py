@@ -264,6 +264,8 @@ def subnet3Right():
   typingPrint("outside world just to realize you are still jobless lol.")
 
 def subnet3Wrong():
+  global lives
+  lives -= 1
   clearScreen()
   typingPrint("Ole Smitty: \"Muahahah. That was the wrong answer, and that means your soul is mine.\n")
   typingPrint("He eats sucks the soul out of you as he cackles.\n")
@@ -284,6 +286,8 @@ def subnet2Right():
   subnet3()
   
 def subnet2Wrong():
+  global lives
+  lives -= 1
   clearScreen()
   typingPrint("Ole Smitty: \"Muahahah. That was the wrong answer, and that means your soul is mine.\n")
   typingPrint("He eats sucks the soul out of you as he cackles.\n")
@@ -309,6 +313,8 @@ def subnet2():
       typingPrint("Please enter a valid option.\n")
 
 def subnet1Wrong():
+  global lives
+  lives -= 1
   clearScreen()
   typingPrint('Ole Smitty: "Muahahah. That was the wrong answer, and that means your soul is mine.\n')
   typingPrint("He eats sucks the soul out of you as he cackles.\n")
@@ -374,6 +380,8 @@ def floor4Elevator():
     
   
 def staticRouteWrong():
+  global lives
+  lives -= 1
   clearScreen()
   typingPrint("Nate: *incorrect buzzer sound effect*\"Go again.\"n")
   staticRoute()
@@ -408,6 +416,8 @@ def natRight():
   staticRoute()
   
 def natWrong():
+  global lives
+  lives -= 1
   clearScreen()
   typingPrint("Nate: \"Nah, fam. Try again.\"\n")
 
@@ -441,6 +451,8 @@ def dhcpRight():
   nat()
 
 def dhcpWrong():
+  global lives
+  lives -= 1
   clearScreen()
   typingPrint("Nate: \"Try that again... you can do better.\"\n")
   dhcp()
@@ -528,6 +540,8 @@ def stpRight():
       typingPrint("Please enter a valid option.\n")
 
 def stpWrong():
+  global lives
+  lives -= 1
   clearScreen()
   typingPrint("Nate: \"No, try it again.\"\n")
   maxPortsRight()
@@ -557,6 +571,8 @@ def maxPortsRight():
 
 
 def maxPortsWrong():
+  global lives
+  lives -= 1
   clearScreen()
   typingPrint("Nate: \"Even I know that one. Try again.\"\n")
 
@@ -596,6 +612,8 @@ def switch1Right():
 
 
 def switch1Wrong():
+  global lives
+  lives -= 1
   clearScreen()
   typingPrint("Nate: \"Erm. Try again.\"\n")
 
@@ -617,8 +635,6 @@ def switch():
       switch1Wrong()
     else:
       typingPrint("Please enter a valid option.\n")
-
-
 
 def floor2ElevatorRight():
   global name
