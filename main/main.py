@@ -167,7 +167,6 @@ def cleetus1():
   global name
   global cleetusTalk
   cleetusTalk = True
-  clearScreen()
   typingPrint("Cleetus: \"Why of course. You don't need to pay anyone else for desk service when you have Cleetus.\"\n")
   typingPrint(name + ": " + "*tight budget I guess*\n")
   talkToCleetus()
@@ -176,7 +175,6 @@ def cleetus2():
   global name
   global cleetusTalk
   cleetusTalk = True
-  clearScreen()
   typingPrint("Cleetus: \"Paid? You're the unpaid intern. It says so right here on your name tag.\"\n")
   typingPrint(name + ": " + "*At least I'll get experience.*\n")
   talkToCleetus()
@@ -185,7 +183,6 @@ def cleetus3():
   global name
   global cleetusTalk
   cleetusTalk = True
-  clearScreen()
   typingPrint("Cleetus: \"No.\"\n")
   typingPrint(name + ": " + "\"Why not?\"\n")
   typingPrint("Cleetus: \"No one meets the boss.\"\n")
@@ -195,7 +192,6 @@ def talkToCleetus():
   global explore
   global name
   explore = True
-  clearScreen()
   if cleetusTalk == False:
     typingPrint("Cleetus: \"What's up " + name + " ? Got any questions for Cleetus?\n")
     typingPrint("1: Are you the only secretary?\n")
@@ -488,7 +484,7 @@ def floor3ElevatorRight():
   typingPrint(name +": \"Yeah, alright.\"\n")
   typingPrint("Nate: \"Let's just get off. It's not the most safe to be on there. I just want to make sure you get the whole experience.\"\n")
   typingPrint("Unease fills your body as you exit the elevator. The desecrated routers are barely screwed in, and the racks are disheveled as ever. There also seems to be an ominous red stain upon the wall in front of you.\n\n")
-  typingPrint("y/n: *Maybe someone spilled their lunch.*\n")
+  typingPrint(name + "*Maybe someone spilled their lunch.*\n")
   typingPrint("Nate: \"Don't worry about that stain, it's really nothing. You should be more worried about your next tasks. First, I need you to fix our DHCP server, then you will configure NAT, and finally, configure a new static route.\"")
   dhcp()
 def floor3Elevator():
@@ -640,7 +636,7 @@ def floor2ElevatorRight():
   global name
   clearScreen()
   typingPrint("As you step into the elevator, you can feel an ominous force lurking. It almost feels as if someone is inside your brain.\"\n")
-  typingPrint(name + ": y/n: \"I think I'm starting to develop a headache. Is it okay if I go home for the day. I don't want to risk getting anyone sick.\"\n")
+  typingPrint(name + ": \"I think I'm starting to develop a headache. Is it okay if I go home for the day. I don't want to risk getting anyone sick.\"\n")
   typingPrint("Nate: \"No, worries! You're the only one who's working on the next two floors.\"\n")
   typingPrint(name +": \"What?\"\n")
   typingPrint("Nate: \"Well, besides me. But most of the time I'm helping out the boss with his tech issues.\"\n")
@@ -679,6 +675,7 @@ def t3Right():
   typingPrint(name +": \"Muy bien, Nate.\"\n")
   typingPrint("Nate: \"Gracias, vamos arriba!\"\n")
   typingPrint(name +": \"Sí.\"\n")
+  floor2Elevator()
 
 
 def t3Wrong():
@@ -723,6 +720,7 @@ def t2Right():
   typingPrint("Nate: \"Woah, nice job!\"\n")
   typingPrint("Clarisse: \"Cheers, luv!\"\n")
   typingPrint("\"Let's keep it moving " + name + ".\"\n")
+  troubleshoot3()
 
 
 def t2Wrong():
