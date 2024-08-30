@@ -12,6 +12,7 @@ import time, os, sys
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#initializes global variables
 name = ""
 keycard = False
 weight = 0
@@ -31,6 +32,11 @@ def typingPrint(text):
   for char in text:
     print(char, end='', flush = True)
     time.sleep(0.04)
+    
+def quickPrint(text):
+  for char in text:
+    print(char, end='', flush = True)
+    time.sleep(0.01)
     
 def terminalInput(text):
   for char in text:
@@ -71,6 +77,7 @@ def unemployedEnd():
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def enterBuilding():
   global name
+  name = "burt"
   clearScreen()
   if explore == False:
     clearScreen()
@@ -82,10 +89,9 @@ def enterBuilding():
     typingPrint("Nate: \"To the right, we have a few chairs for visitors and the bathroom is down that way too.\"\n")
     typingPrint("*That's handy to know.*\n")
     typingPrint("Nate: \"Right in front of us, we have the lobby desk with our lovely secretary. Say hi to Cleetus!\"\n")
-    typingPrint("Nate: \"To the right, we have a few chairs for visitors and the bathroom is down that way too.\"\n")
     typingPrint(name + ": " + "\"Hi... Cleetus\"\n")
     typingPrint("Cleetus: \"Howdy, newbie! You must be the new intern. What's your name again?\"\n")
-    typingPrint(name + ": " + name + ".\n")
+    typingPrint(name + ": \"" +  name + ".\"\n")
     typingPrint("Cleetus: \"Alright then! Let's see... " + name + ", right here. You'll be on floor 1 with network management. Here's your keycard.\"\n")
     keycard = True
     typingPrint("Nate: \"Thanks a lot Cleetus! Isn't he the sweetest?\"\n")
@@ -220,37 +226,12 @@ def talkToCleetus():
       
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def lobbyElevator():
-  global explore
-  global name
-  explore = True
-  clearScreen()
-  typingPrint("Cleetus: \"Enjoy your first day!\"\n")
-  typingPrint(name + ": \"Sorry for taking so long, Nate.\"\n")
-  typingPrint("Nate: \"K, let's get going.\"\n")
-  typingPrint(name + ": *He seems a little angry.*\n")
-  typingPrint("You move past him and swipe your keycard across the scanner next to the door and enter. Nate follows.\n")
-  typingPrint("Nate: \"You know that was an RFID reader you used. It wirelessly reads the RFID tag your card emits and compares your data against our employee database.\"\n")
-  typingPrint(name + ": \"I didn't, thank you for this valuable information.\"\n")
-  clearScreen()
-  typingPrint("*ding*\nAs the elevator doors open, you let out a sigh of relief.\n" + name + ": *Man, Nate is odd.* \n")
-  typingPrint("Nate: \"Here's the 1st floor. This is our customer service floor where our lovely employees help customers through their problems when Cleetus is not available.\n")
-  typingPrint("Your first task is to build Janet's new computer. She's our top employee on this level, so she needs the best equipment at all times. Come say hi!\"\n")
-  typingPrint("Nate: \"Janet, this is our new intern, " + name + ". They're here to build your PC.\"\n")
-  typingPrint("Janet: \"Nice to meet you! I have all the parts right here. I'm so excited to have a 4090!\"\n")
-  typingPrint(name + ": \"Wow, that's awesome! I can't wait to build it for you.\"\n")
-  typingPrint("Nate: \"Okay, let's get started. I'll give you about two hours to build it.\"\n")
-  typingPrint(name + ": \"Sounds like a deal.\"\n")
-  buildPC()
-
-#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 def subnet3Right():
   clearScreen()
   typingPrint("Ole Smitty: \"This is not possible. No. No no no no no. NO!\n")
   typingPrint("There's no chance you just bested me, the subnetting wizard, Ole Smitty.\n")
   typingPrint("I cannot live after such a devastating embarrassment.\n")
-  typingPrint("Here is your recommendation letter and company of interest.\n")
+  typingPrint("Here is your recommendation letter and Jeff Bezos personal email.\n")
   typingPrint("\n")
   typingPrint("He hands you a tobacco-stained piece of paper with\n")
   typingPrint('the words, "Google, hire dis guy. He very smart.\n')
@@ -331,6 +312,8 @@ def subnet1():
     subnet1Wrong()
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#floor 4
 def floor4ElevatorRight():
   global name
   clearScreen()
@@ -385,7 +368,7 @@ def staticRouteWrong():
 def staticRouteRight():
   global name
   clearScreen()
-  typingPrint("Nate: \"All done with the routers, fantastic job!\"n")
+  typingPrint("Nate: \"All done with the routers, fantastic job!\"\n")
   typingPrint(name + ": \"Thanks again, Nate. It's really nothing. I'm just doing my job.\"\n")
   floor4Elevator()
 
@@ -416,19 +399,20 @@ def natWrong():
   lives -= 1
   clearScreen()
   typingPrint("Nate: \"Nah, fam. Try again.\"\n")
-
+  natChoices()
 
 def nat():
   global name
-  clearScreen()
   typingPrint(name + "\"Got it, Nate. Thanks.\"\n")
   typingPrint("You are already logged into the router, so you enter the exit command to return to global configuration mode.\n")
   typingPrint(name + "*It looks like I need to create a static NAT configuration.*\n")
+  natChoices()
+  
+def natChoices():
   typingPrint("What is the command used to create a static inside NAT configuration?\n")
   typingPrint("1: ip nat translation inside address\n")
   typingPrint("2: ip nat inside\n")
   typingPrint("3: ip nat inside source static address\n")
-  
   actions = ["1", "2", "3"]
   userInput = ""
   while userInput not in actions:
@@ -453,7 +437,6 @@ def dhcpWrong():
   typingPrint("Nate: \"Try that again... you can do better.\"\n")
   dhcp()
 
-
 def dhcp():
   clearScreen()
   typingPrint(name + ": *okay, first up. DHCP*\n")
@@ -473,6 +456,9 @@ def dhcp():
     else:
       typingPrint("Please enter a valid option.\n")
 
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+#floor 3
 def floor3ElevatorRight():
   clearScreen()
   typingPrint("Nate: \"Okay, nice. Let's continue.\"\n")
@@ -481,12 +467,14 @@ def floor3ElevatorRight():
   typingPrint("*ding*\n")
   typingPrint("Nate: \"Sorry about that. The elevator guy is coming in tomorrow.\"\n")
   typingPrint(name + ": *What kind of elevator is this?*\n")
+  typingPrint("Nate: \"The good kind.\"\n")
   typingPrint(name +": \"Yeah, alright.\"\n")
   typingPrint("Nate: \"Let's just get off. It's not the most safe to be on there. I just want to make sure you get the whole experience.\"\n")
   typingPrint("Unease fills your body as you exit the elevator. The desecrated routers are barely screwed in, and the racks are disheveled as ever. There also seems to be an ominous red stain upon the wall in front of you.\n\n")
   typingPrint(name + "*Maybe someone spilled their lunch.*\n")
   typingPrint("Nate: \"Don't worry about that stain, it's really nothing. You should be more worried about your next tasks. First, I need you to fix our DHCP server, then you will configure NAT, and finally, configure a new static route.\"")
   dhcp()
+  
 def floor3Elevator():
   global name
   i = 0
@@ -509,12 +497,8 @@ def floor3Elevator():
   if userInput == binNum3:
     floor3ElevatorRight()
 
-
-
-
-
 def stpRight():
-  typingPrint("Nate: \"Swagalicious, my croney! On to the final task... etherchannel.\"\n")
+  typingPrint("Nate: \"Swagalicious, my crony! On to the final task... etherchannel.\"\n")
   typingPrint("*I'm pretty sure that's the technique used for link aggregation. It allows multiple connections to act as one.*\n")
   typingPrint("You enter the show etherchannel command in privileged exec mode to check the status of the links.\n")
   typingPrint("*Zounds, this is a problem. G0/1 and G0/2 are on VLAN 1, instead of 99. Let's change them to VLAN 99.\n")
@@ -542,7 +526,6 @@ def stpWrong():
   typingPrint("Nate: \"No, try it again.\"\n")
   maxPortsRight()
 
-
 def maxPortsRight():
   global name
   clearScreen()
@@ -564,14 +547,11 @@ def maxPortsRight():
     else:
       typingPrint("Please enter a valid option.\n")
 
-
-
 def maxPortsWrong():
   global lives
   lives -= 1
   clearScreen()
   typingPrint("Nate: \"Even I know that one. Try again.\"\n")
-
 
 def switch1Right():
   global name
@@ -587,11 +567,9 @@ def switch1Right():
   typingPrint("Nate: \"Now I also know we also need to update the max number of allowed ports and ensure STP and Etherchannel are operational.\nLuckily, we have a subscription to Cisco DNA center so we can manage multiple switches from one computer.")
   typingPrint("You boot up DNA center on the computer beside the massive rack of switches and open the terminal.\n")
   typingPrint(name + "\"Okay, first I have to change the max number of ports.\"\n")
-  clearScreen()
-  
   typingPrint("\"What command can accomplish this?\"\n")
   typingPrint("1: switchport port-security\n")
-  typingPrint("2: switchport port-security violation\n")
+  typingPrint("2: switchport port-security add (#)\n")
   typingPrint("3: switchport port-security maximum (#)\n")
   actions = ["1", "2", "3"]
   userInput = ""
@@ -605,14 +583,11 @@ def switch1Right():
     else:
       typingPrint("Please enter a valid option.\n")
 
-
-
 def switch1Wrong():
   global lives
   lives -= 1
   clearScreen()
   typingPrint("Nate: \"Erm. Try again.\"\n")
-
 
 def switch():
   clearScreen()
@@ -641,13 +616,17 @@ def floor2ElevatorRight():
   typingPrint(name +": \"What?\"\n")
   typingPrint("Nate: \"Well, besides me. But most of the time I'm helping out the boss with his tech issues.\"\n")
   typingPrint(name +": \"Interesting.\"\n*ding* The elevator doors open and a rancid scent pervades your nostrils.")
+  typingPrint(name +": \"It smells like something died in here\"\n")
   typingPrint("Nate: \"Died? No one died in here.\"\n")
   typingPrint(name +": \"What's that smell then?\"\n")
   typingPrint("Nate: \"Sorry, I farted. Let's go somewhere else.\"\n")
   typingPrint(name +": \"Good idea.\"\n")
   typingPrint("Nate: \"Anyway, this is the switching room. We keep all of our switches here alongside a few test computers. Let's go over to switch 1.\"\n")
   switch()
-  
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#floor 2
 def floor2Elevator():
   i = 0
   randNum2 = random.randint(0,15)
@@ -666,8 +645,6 @@ def floor2Elevator():
   if userInput == binNum2:
     floor2ElevatorRight()
       
-#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 def t3Right():
   global name
   clearScreen()
@@ -813,6 +790,7 @@ def level1Elevator():
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#floor 1
 def wrongHypervisor():
   clearScreen()
   global lives
@@ -826,7 +804,6 @@ def rightHypervisor():
   level1Elevator()
 
 def hypervisorQuestion():
-  clearScreen()
   typingPrint("Should we use a type 1 or type 2 hypervisor?\"\n")
   actions = ["1", "2"]
   userInput = ""
@@ -846,22 +823,23 @@ def finishedPC():
   clearScreen()
   typingPrint(name + ": \"It's all finished!\"\n")
   typingPrint("Janet: \"Thank you so much!\"\n")
-  typingPrint("Nate: \"What a star. Now... let's see if you can install the right hypervisor on her computer.\"\n")
-  typingPrint("Our company operates on Linux, but she chose to have a Windows PC.\"\n")
-  typingPrint("It is essentially a manager for virtual machines. A virtual machine is like a fake operating system.\"\n")
-  typingPrint("It allows a user to use their PC on an operating system other than the natively installed one.\"\n")
+  typingPrint("Nate: \"What a star. Now... let's see if you can install the right hypervisor on her computer.\n")
+  typingPrint("Our company operates on Linux, but she chose to have a Windows PC.\n")
+  typingPrint("It is essentially a manager for virtual machines. A virtual machine is like a fake operating system.\n")
+  typingPrint("It allows a user to use their PC on an operating system other than the natively installed one.\n")
   typingPrint("You can have multiple opened at a time, and ahypervisor is what manages these virtual machine instances.\"\n")
   hypervisorQuestion()
-
 
 def brokenPC():
   clearScreen()
   global name
   global lives
   lives -= 1
-  typingPrint("Janet: \"NOOOO, MY BEAUTIFUL PC. YOU ARE UNQUALIFIED. NATE, GET THEM OUT OF HERE!!!\"")
+  typingPrint("Janet: \"NOOOO, MY BEAUTIFUL PC. YOU ARE UNQUALIFIED. NATE, GET THEM OUT OF HERE!!!\"\n")
   typingPrint("Nate: \"Don't worry, Janet. We'll buy you a new one from " + name + "'s non-existent paycheck.\"\n")
-
+  typingPrint("You became broke and died of unemployment.\n")
+  typingPrint("UNEMPLOYED ENDING #2\n")
+  quit()
 
 def buildPC():
   clearScreen()
@@ -870,15 +848,15 @@ def buildPC():
   steps = [1, 4, 5, 3, 6, 7, 2, 8]
   words = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eigth"]
   for i in range(len(steps)):
-      typingPrint("What's the " + words[i] + " step to building a PC?\n")
-      typingPrint("1: Ground the PC to prevent Electrostatic Discharge\n")
-      typingPrint("2: Install GPU\n")
-      typingPrint("3: Install Power Supply\n")
-      typingPrint("4: Install CPU & Cooler\n")
-      typingPrint("5: Install RAM\n")
-      typingPrint("6: Install Motherboard\n")
-      typingPrint("7: Install SSD/HDD\n")
-      typingPrint("8: Plug in PC and power on\n")  
+      quickPrint("What's the " + words[i] + " step to building a PC?\n")
+      quickPrint("1: Ground the PC to prevent Electrostatic Discharge\n")
+      quickPrint("2: Install GPU\n")
+      quickPrint("3: Install Power Supply\n")
+      quickPrint("4: Install CPU & Cooler\n")
+      quickPrint("5: Install RAM\n")
+      quickPrint("6: Install Motherboard\n")
+      quickPrint("7: Install SSD/HDD\n")
+      quickPrint("8: Plug in PC and power on\n")  
       userInput = int(input("Enter Answer: "))
       if userInput == steps[i]:
           pcWins += 1
@@ -893,8 +871,32 @@ def buildPC():
       if pcWins >= 8:
           finishedPC()
 
+
+def lobbyElevator():
+  global explore
+  global name
+  explore = True
+  clearScreen()
+  typingPrint("Cleetus: \"Enjoy your first day!\"\n")
+  typingPrint(name + ": \"Sorry for taking so long, Nate.\"\n")
+  typingPrint("Nate: \"K, let's get going.\"\n")
+  typingPrint(name + ": *He seems a little angry.*\n")
+  typingPrint("You move past him and swipe your keycard across the scanner next to the door and enter. Nate follows.\n")
+  typingPrint("Nate: \"You know that was an RFID reader you used. It wirelessly reads the RFID tag your card emits and compares your data against our employee database.\"\n")
+  typingPrint(name + ": \"I didn't, thank you for this valuable information.\"\n")
+  clearScreen()
+  typingPrint("*ding*\nAs the elevator doors open, you let out a sigh of relief.\n" + name + ": *Man, Nate is odd.* \n")
+  typingPrint("Nate: \"Here's the 1st floor. This is our customer service floor where our lovely employees help customers through their problems when Cleetus is not available.\n")
+  typingPrint("Your first task is to build Janet's new computer. She's our top employee on this level, so she needs the best equipment at all times. Come say hi!\"\n")
+  typingPrint("Nate: \"Janet, this is our new intern, " + name + ". They're here to build your PC.\"\n")
+  typingPrint("Janet: \"Nice to meet you! I have all the parts right here. I'm so excited to have a 4090!\"\n")
+  typingPrint(name + ": \"Wow, that's awesome! I can't wait to build it for you.\"\n")
+  typingPrint("Nate: \"Okay, let's get started. I'll give you about two hours to build it.\"\n")
+  typingPrint(name + ": \"Sounds like a deal.\"\n")
+  buildPC()
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#introductory scene
 if __name__ == "__main__":
   clearScreen()
   typingPrint("\"Today's the day! I finally landed a tech internship after three years.\n")
